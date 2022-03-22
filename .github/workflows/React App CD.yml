@@ -19,6 +19,14 @@ jobs:
         node-version: 12.x
         cache: 'npm'
         
+    - name: Set up Git
+      env:
+        MY_USERNAME: srjheam
+      run: |
+        git config --global user.email ${{ secrets.MY_EMAIL }}
+        git config --global user.name $MY_USERNAME
+        git remote set-url origin https://$MY_USERNAME:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+        
     - name: Deploy
       run: |
         npm ci

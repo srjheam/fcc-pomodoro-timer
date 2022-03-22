@@ -20,5 +20,6 @@ jobs:
         cache: 'npm'
         
     - name: Deploy
-    - run: npm ci
-    - run: npm run deploy
+      run: |
+        npm ci
+        npm run deploy --if-present

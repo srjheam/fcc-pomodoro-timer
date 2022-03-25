@@ -1,12 +1,15 @@
 .Timer {
   cursor: pointer;
-  animation: 1s ease-in-out infinite alternate paused fade;
+  animation: 1s ease-in-out infinite alternate running fadein;
 }
 
-@keyframes fade {
+@keyframes fadein {
   from {
     opacity: 1;
   }
+}
+
+@keyframes fadeout {
   to {
     opacity: .6;
   }

@@ -28,7 +28,7 @@ export function Timer() {
   });
 
   return (
-    <div className="Timer" onClick={() => dispatch(switchIsRunning())} style={{ animationPlayState: !hasStarted ^ isRunning ? 'paused' : 'running' }}>
+    <div className="Timer" onClick={() => dispatch(switchIsRunning())} style={{ animationName: !hasStarted ^ isRunning ? 'fadein' : 'fadeout' }}>
       <span>
         {timer.minutes.toString().padStart(2, '0')}
       </span>

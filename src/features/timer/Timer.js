@@ -27,7 +27,7 @@ export function Timer() {
   });
 
   return (
-    <div onClick={() => dispatch(switchIsRunning())}>
+    <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
       <span>
         {timer.minutes.toString().padStart(2, '0')}
       </span>

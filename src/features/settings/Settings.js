@@ -9,7 +9,7 @@ export function Settings() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className='Settings'>
       <h2>Time</h2>
       <div>
         <h3>Pomodoro</h3>

@@ -10,7 +10,7 @@ export function TimerControl() {
   const dispatch = useDispatch();
 
   return (
-    <div>
+    <div className='TimerControl'>
       <button onClick={() => dispatch(resetTimer())}>
         Reset
       </button>

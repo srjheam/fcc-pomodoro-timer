@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
   switchIsRunning,
+  resetTimer,
 } from '../timer/timerSlice';
 
 export function TimerControl() {
@@ -9,7 +10,7 @@ export function TimerControl() {
 
   return (
     <div>
-      <button>
+      <button onClick={() => dispatch(resetTimer())}>
         Reset
       </button>
       <button onClick={() => dispatch(switchIsRunning())}>

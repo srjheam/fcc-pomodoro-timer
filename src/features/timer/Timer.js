@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   decrementTime,
+  nextTimer,
   switchIsRunning,
 } from './timerSlice';
 import './Timer.scss';
@@ -21,6 +22,9 @@ export function Timer() {
     const timeout = setTimeout(() => {
       if (isRunning) {
         dispatch(decrementTime());
+        if (timeRemaining <= 0) {
+          dispatch(nextTimer());
+        }
       }
     }, 1000);
 

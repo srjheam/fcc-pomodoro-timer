@@ -23,6 +23,12 @@ export const timerSlice = createSlice({
     nextTimer: (state) => {
       state.onBreak = !state.onBreak;
       state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
+      state.isRunning = false;
+      state.hasStarted = false;
+    },
+    skipTimer: (state) => {
+      state.onBreak = !state.onBreak;
+      state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
       state.isRunning = true;
       state.hasStarted = true;
     },
@@ -46,6 +52,6 @@ export const timerSlice = createSlice({
   },
 });
 
-export const { decrementTime, switchIsRunning, nextTimer, resetTimer, updatePomodoroTime, updateBreakTime } = timerSlice.actions;
+export const { decrementTime, switchIsRunning, nextTimer, skipTimer, resetTimer, updatePomodoroTime, updateBreakTime } = timerSlice.actions;
 
 export default timerSlice.reducer;

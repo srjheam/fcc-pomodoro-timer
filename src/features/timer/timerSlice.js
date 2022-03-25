@@ -19,7 +19,8 @@ export const timerSlice = createSlice({
       state.isRunning = !state.isRunning;
     },
     nextTimer: (state) => {
-      
+      state.onBreak = !state.onBreak;
+      state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
     },
     resetTimer: (state) => {
       state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;

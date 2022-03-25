@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import {
   switchIsRunning,
+  nextTimer,
   resetTimer,
 } from '../timer/timerSlice';
 
@@ -16,7 +17,7 @@ export function TimerControl() {
       <button onClick={() => dispatch(switchIsRunning())}>
         Play
       </button>
-      <button>
+      <button onClick={() => dispatch(nextTimer())}>
         Skip
       </button>
     </div>

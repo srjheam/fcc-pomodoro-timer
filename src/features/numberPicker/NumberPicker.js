@@ -2,7 +2,7 @@ import React from 'react';
 
 export function NumberPicker(props) {
   return (
-    <div>
+    <div className='NumberPicker'>
       <button onClick={() => props.onCounterChange(props.counter - (+props.changeAmount))}>
         --
       </button>

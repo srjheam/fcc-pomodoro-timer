@@ -1,0 +1,27 @@
+.Settings {
+  h2, h3 {
+    margin-top: 0px;
+    text-align: center;
+  }
+
+  .TimeWrapper {
+    display: grid;
+    grid-auto-columns: 1fr 1fr;
+    gap: 16px;
+
+    .TimePomodoro {
+      grid-column: 1;
+    }
+    
+    .TimeBreak {
+      grid-column: 2;
+    }
+
+    .NumberPicker {
+      display: inline-block;
+      position: relative;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

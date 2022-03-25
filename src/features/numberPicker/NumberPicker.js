@@ -1,13 +1,13 @@
 import React from 'react';
 
-export function NumberPicker() {
+export function NumberPicker(props) {
   return (
     <div>
-      <button>
+      <button onClick={() => props.onCounterChange(props.counter - (+props.changeAmount))}>
         --
       </button>
-      <p>21312</p>
-      <button>
+      <span>{props.counter}</span>
+      <button onClick={() => props.onCounterChange(props.counter + (+props.changeAmount))}>
         ++
       </button>
     </div>

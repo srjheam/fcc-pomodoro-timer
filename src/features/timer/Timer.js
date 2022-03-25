@@ -9,6 +9,7 @@ import './Timer.scss';
 export function Timer() {
   const timeRemaining = useSelector((state) => state.timer.timeRemaining);
   const isRunning = useSelector((state) => state.timer.isRunning);
+  const hasStarted = useSelector((state) => state.timer.hasStarted);
   const dispatch = useDispatch();
 
   const timer = {
@@ -27,7 +28,7 @@ export function Timer() {
   });
 
   return (
-    <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
+    <div className="Timer" onClick={() => dispatch(switchIsRunning())} style={{ animationPlayState: !hasStarted ^ isRunning ? 'paused' : 'running' }}>
       <span>
         {timer.minutes.toString().padStart(2, '0')}
       </span>

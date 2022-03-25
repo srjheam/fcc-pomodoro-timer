@@ -2,7 +2,9 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import {
   decrementTime,
+  switchIsRunning,
 } from './timerSlice';
+import './Timer.scss';
 
 export function Timer() {
   const timeRemaining = useSelector((state) => state.timer.timeRemaining);
@@ -25,7 +27,7 @@ export function Timer() {
   });
 
   return (
-    <div>
+    <div onClick={() => dispatch(switchIsRunning())}>
       <span>
         {timer.minutes.toString().padStart(2, '0')}
       </span>

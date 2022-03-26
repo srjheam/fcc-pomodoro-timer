@@ -1,0 +1,66 @@
+.NumberPicker {
+  $height: 23px;
+
+  $border-width: 1px;
+  $border-color: #bebebe;
+  @mixin border {
+    border: $border-width solid $border-color;
+  }
+
+  > * {
+    width: 32px;
+    background-color: #eee;
+  }
+
+  > button {
+    height: $height;
+    @include border;
+  }
+  
+  .btn-incrementer {
+    border-radius: 0px 8px 8px 0px;
+    border-left: none;
+  }
+
+  .btn-decrementer {
+    border-radius: 8px 0px 0px 8px;
+    border-right: none;
+  }
+  
+  .Counter {
+    display: inline-block;
+    position: relative;
+    top: 2px;
+    height: $height;
+    text-align: center;
+    @include border;
+    border-right: none;
+    border-left: none;
+    line-height: .8em;
+    box-sizing: border-box;
+  }
+  
+  .Counter:before {
+    content: '';
+    display: inline-block;
+    position: relative;
+    left: -10.8px;
+    top: 50%;
+    transform: translateY(-54%);
+    width: $border-width;
+    height: 80%;
+    background-color: $border-color;
+  }
+  
+  .Counter:after {
+    content: '';
+    display: inline-block;
+    position: relative;
+    right: -10.8px;
+    top: 50%;
+    transform: translateY(-54%);
+    width: $border-width;
+    height: 80%;
+    background-color: $border-color;
+  }
+}

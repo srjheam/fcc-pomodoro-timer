@@ -1,6 +1,64 @@
 .Timer {
+  $timerHeight: 320px;
+  $outerPadding: $timerHeight * .125;
+  $svgStrokeDasharray: $timerHeight * 2.95;
+
+  display: flex;
+  place-content: center center;
+  position: relative;
   cursor: pointer;
   animation: 1s ease-in-out infinite alternate running fadein;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .outer {
+    height: $timerHeight;
+    width: $timerHeight;
+    border-radius: 50%;
+    padding: $outerPadding;
+  }
+
+  .inner {
+    $innerHeight: $timerHeight - $outerPadding;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    height: $innerHeight;
+    width: $innerHeight;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: #eee;
+
+    span {
+      width: 1em;
+      font-size: 4em;
+      font-weight: 300;
+      margin: .2em;
+    }
+  }
+
+  svg {
+    width: $timerHeight;
+    height: $timerHeight;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1) rotate(-90deg);
+
+    circle {
+      fill: none;
+      stroke: black;
+      stroke-width: $outerPadding;
+      stroke-dasharray: $svgStrokeDasharray;
+    }
+  }
+
 }
 
 @keyframes fadein {

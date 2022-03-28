@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  timeRemaining: 25 * 60, // 25 minutes in seconds
-  pomodoroTime: 25 * 60,
-  breakTime: 5 * 60, // 5 minutes in seconds
+  totalTime: 25 * 600, // 25 minutes in deciseconds
+  timeRemaining: 25 * 600, // 25 minutes in deciseconds
+  pomodoroTime: 25 * 600,
+  breakTime: 5 * 600, // 5 minutes in deciseconds
   onBreak: false,
   isRunning: false,
   hasStarted: false
@@ -23,17 +24,20 @@ export const timerSlice = createSlice({
     nextTimer: (state) => {
       state.onBreak = !state.onBreak;
       state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
+      state.totalTime = state.timeRemaining;
       state.isRunning = false;
       state.hasStarted = false;
     },
     skipTimer: (state) => {
       state.onBreak = !state.onBreak;
       state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
+      state.totalTime = state.timeRemaining;
       state.isRunning = true;
       state.hasStarted = true;
     },
     resetTimer: (state) => {
       state.timeRemaining = state.onBreak ? state.breakTime : state.pomodoroTime;
+      state.totalTime = state.timeRemaining;
       state.isRunning = false;
       state.hasStarted = false;
     },
@@ -41,12 +45,14 @@ export const timerSlice = createSlice({
       state.pomodoroTime = action.payload;
       if (!state.hasStarted && !state.onBreak) {
         state.timeRemaining = action.payload;
+        state.totalTime = state.timeRemaining;
       }
     },
     updateBreakTime: (state, action) => {
       state.breakTime = action.payload;
       if (!state.hasStarted && state.onBreak) {
         state.timeRemaining = action.payload;
+        state.totalTime = state.timeRemaining;
       }
     },
   },

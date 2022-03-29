@@ -25,3 +25,31 @@ button {
     }
   }
 }
+
+$primaryPomodoroColor: #B30000;
+$primaryPomodoroLightColor: #FF1919;
+$primaryBreakColor: #0971B3;
+$primaryBreakLightColor: #19A6FF;
+
+@mixin palette($primaryColor, $primaryLightColor) {
+  button {
+    transition: 100ms;
+    color: $primaryLightColor;
+
+    svg {
+      filter: drop-shadow(1px 1px $primaryColor);
+
+      &:active {
+        filter: none;
+      }
+    }
+  }
+}
+
+.palettePomodoro {
+  @include palette($primaryPomodoroColor, $primaryPomodoroLightColor);
+}
+
+.paletteBreak {
+  @include palette($primaryBreakColor, $primaryBreakLightColor);
+}

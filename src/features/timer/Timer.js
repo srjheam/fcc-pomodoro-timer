@@ -6,7 +6,7 @@ import {
   switchIsRunning,
 } from './timerSlice';
 import './Timer.scss';
-import STYLE from '../../app/App.style';
+import PALETTE from '../../app/App.style';
 
 export function Timer() {
   const timeRemaining = useSelector((state) => state.timer.timeRemaining);
@@ -22,10 +22,7 @@ export function Timer() {
     seconds: Math.floor(timeRemaining % 600 / 10),
   };
 
-  const colors = {
-    primaryColor: onBreak ? STYLE.breakPalette.primaryBreakColor : STYLE.pomodoroPalette.primaryPomodoroColor,
-    primaryLightColor: onBreak ? STYLE.breakPalette.primaryLightBreakColor : STYLE.pomodoroPalette.primaryLightPomodoroColor,
-  };
+  const colors = PALETTE(onBreak);
 
   const svgCircleTransitionDefault = "100ms";
   let svgCircleTransition = useRef(svgCircleTransitionDefault);

@@ -28,9 +28,8 @@
     transform: translateY(-50%) translateX(-50%);
     height: $innerHeight;
     width: $innerHeight;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    display: grid;
+    place-content: center center;
     border-radius: 50%;
     background-color: #eee;
     animation: 1s ease-in-out infinite alternate running fadein;
@@ -41,9 +40,16 @@
       font-weight: 300;
       margin: .2em;
     }
+
+    .endTime {
+      font-size: 1.2em;
+      letter-spacing: .05em;
+      text-align: center;
+      transform: translateY(1em);
+    }
   }
 
-  svg {
+  .timerRing {
     width: $timerHeight;
     height: $timerHeight;
     position: absolute;
@@ -59,16 +65,4 @@
     }
   }
 
-}
-
-@keyframes fadein {
-  from {
-    opacity: 1;
-  }
-}
-
-@keyframes fadeout {
-  to {
-    opacity: .6;
-  }
 }

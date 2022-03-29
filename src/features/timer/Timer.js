@@ -5,6 +5,8 @@ import {
   nextTimer,
   switchIsRunning,
 } from './timerSlice';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './Timer.scss';
 import PALETTE from '../../app/App.style';
 
@@ -13,7 +15,6 @@ export function Timer() {
   const totalTime = useSelector((state) => state.timer.totalTime);
   const onBreak = useSelector((state) => state.timer.onBreak);
   const isRunning = useSelector((state) => state.timer.isRunning);
-  const hasStarted = useSelector((state) => state.timer.hasStarted);
   const dispatch = useDispatch();
 
   // Convert deciseconds to minutes and seconds
@@ -30,6 +31,8 @@ export function Timer() {
     strokeDashoffset: (1 - timeRemaining / totalTime) * 944,
     transition: svgCircleTransition.current,
   };
+
+  const endTime = new Date(Date.now() + timeRemaining * 100);
   
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -49,16 +52,21 @@ export function Timer() {
   return (
     <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
       <div className="outer">
-        <div className="inner" style={{ animationName: !hasStarted ^ isRunning ? 'fadein' : 'fadeout' }}>
-          <span>
-            {timer.minutes.toString().padStart(2, '0')}
-          </span>
-          <span>
-            {timer.seconds.toString().padStart(2, '0')}
-          </span>
+        <div className="inner">
+          <div>
+            <span>
+              {timer.minutes.toString().padStart(2, '0')}
+            </span>
+            <span>
+              {timer.seconds.toString().padStart(2, '0')}
+            </span>
+          </div>
+          <div className='endTime' style={ isRunning ? null : { opacity: ".4" }  }>
+            <FontAwesomeIcon icon={solid('bell')} /> {endTime.getHours().toString().padStart(2, '0') + ':' + endTime.getMinutes().toString().padStart(2, '0')}
+          </div>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+      <svg className='timerRing' xmlns="http://www.w3.org/2000/svg" version="1.1">
         <defs>
           <linearGradient id="GradientColor" gradientTransform={`rotate(${timeRemaining})`}>
             <stop offset="0%" stopColor={colors.primaryColor} />

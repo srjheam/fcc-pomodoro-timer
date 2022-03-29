@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  totalTime: 25 * 600, // 25 minutes in deciseconds
-  timeRemaining: 25 * 600, // 25 minutes in deciseconds
-  pomodoroTime: 25 * 600,
-  breakTime: 5 * 600, // 5 minutes in deciseconds
+  totalTime: 25 * 60, // 25 minutes in seconds
+  timeRemaining: 25 * 60, // 25 minutes in seconds
+  pomodoroTime: 25 * 60,
+  breakTime: 5 * 60, // 5 minutes in seconds
   onBreak: false,
   isRunning: false,
   hasStarted: false

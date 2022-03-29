@@ -4,7 +4,7 @@ import { NumberPicker } from '../numberPicker/NumberPicker';
 import { updatePomodoroTime, updateBreakTime } from '../timer/timerSlice';
 import './Settings.scss';
 
-const convertSeconds = 600;
+const convertSeconds = 60;
 
 export function Settings() {
   const pomodoroMinutes = useSelector((state) => state.timer.pomodoroTime) / convertSeconds;

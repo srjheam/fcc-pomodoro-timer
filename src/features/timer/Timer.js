@@ -19,32 +19,27 @@ export function Timer() {
 
   // Convert deciseconds to minutes and seconds
   const timer = {
-    minutes: Math.floor(timeRemaining / 600),
-    seconds: Math.floor(timeRemaining % 600 / 10),
+    minutes: Math.floor(timeRemaining / 60),
+    seconds: timeRemaining % 60,
   };
 
   const colors = PALETTE(onBreak);
 
-  const svgCircleTransitionDefault = "100ms";
-  let svgCircleTransition = useRef(svgCircleTransitionDefault);
   const svgCircleStyle = {
     strokeDashoffset: (1 - timeRemaining / totalTime) * 944,
-    transition: svgCircleTransition.current,
   };
 
-  const endTime = new Date(Date.now() + timeRemaining * 100);
+  const endTime = new Date(Date.now() + timeRemaining * 1000);
   
   useEffect(() => {
     const timeout = setTimeout(() => {
       if (isRunning) {
         dispatch(decrementTime());
         if (timeRemaining <= 0) {
-          svgCircleTransition.current = "1.2s";
           dispatch(nextTimer());
-          svgCircleTransition.current = svgCircleTransitionDefault;
         }
       }
-    }, 100);
+    }, 1000);
 
     return () => clearTimeout(timeout);
   });

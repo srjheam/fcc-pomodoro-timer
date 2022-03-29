@@ -62,6 +62,7 @@
       stroke: url("#GradientColor");
       stroke-width: $outerPadding;
       stroke-dasharray: $svgStrokeDasharray;
+      transition: 1s;
     }
   }
 

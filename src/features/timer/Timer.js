@@ -6,10 +6,12 @@ import {
   switchIsRunning,
 } from './timerSlice';
 import './Timer.scss';
+import STYLE from '../../app/App.style';
 
 export function Timer() {
   const timeRemaining = useSelector((state) => state.timer.timeRemaining);
   const totalTime = useSelector((state) => state.timer.totalTime);
+  const onBreak = useSelector((state) => state.timer.onBreak);
   const isRunning = useSelector((state) => state.timer.isRunning);
   const hasStarted = useSelector((state) => state.timer.hasStarted);
   const dispatch = useDispatch();
@@ -18,14 +20,19 @@ export function Timer() {
   const timer = {
     minutes: Math.floor(timeRemaining / 600),
     seconds: Math.floor(timeRemaining % 600 / 10),
-  }
+  };
+
+  const colors = {
+    primaryColor: onBreak ? STYLE.breakPalette.primaryBreakColor : STYLE.pomodoroPalette.primaryPomodoroColor,
+    primaryLightColor: onBreak ? STYLE.breakPalette.primaryLightBreakColor : STYLE.pomodoroPalette.primaryLightPomodoroColor,
+  };
 
   const svgCircleTransitionDefault = "100ms";
   let svgCircleTransition = useRef(svgCircleTransitionDefault);
   const svgCircleStyle = {
     strokeDashoffset: (1 - timeRemaining / totalTime) * 944,
     transition: svgCircleTransition.current,
-  }
+  };
   
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -43,9 +50,9 @@ export function Timer() {
   });
 
   return (
-    <div className="Timer" onClick={() => dispatch(switchIsRunning())} style={{ animationName: !hasStarted ^ isRunning ? 'fadein' : 'fadeout' }}>
+    <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
       <div className="outer">
-        <div className="inner">
+        <div className="inner" style={{ animationName: !hasStarted ^ isRunning ? 'fadein' : 'fadeout' }}>
           <span>
             {timer.minutes.toString().padStart(2, '0')}
           </span>
@@ -55,6 +62,12 @@ export function Timer() {
         </div>
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+        <defs>
+          <linearGradient id="GradientColor" gradientTransform={`rotate(${timeRemaining})`}>
+            <stop offset="0%" stopColor={colors.primaryColor} />
+            <stop offset="100%" stopColor={colors.primaryLightColor} />
+          </linearGradient>
+          </defs>
         <circle cx="160" cy="160" r="140" strokeLinecap="round" style={svgCircleStyle} />
       </svg>
     </div>

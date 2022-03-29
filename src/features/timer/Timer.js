@@ -47,7 +47,7 @@ export function Timer() {
   return (
     <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
       <div className="outer">
-        <div className="inner">
+        <div className="inner" style={{ borderColor: `${colors.primaryColor}99`}}>
           <div>
             <span>
               {timer.minutes.toString().padStart(2, '0')}

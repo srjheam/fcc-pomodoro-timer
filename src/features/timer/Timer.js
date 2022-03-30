@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 import './Timer.scss';
 import PALETTE from '../../app/App.style';
+import beepSound from './assets/finish_beep.ogg';
 
 export function Timer() {
   const timeRemaining = useSelector((state) => state.timer.timeRemaining);
@@ -35,6 +36,7 @@ export function Timer() {
       if (isRunning) {
         dispatch(decrementTime());
         if (timeRemaining <= 0) {
+          document.getElementById('beep').play();
           dispatch(nextTimer());
         }
       }
@@ -45,6 +47,7 @@ export function Timer() {
 
   return (
     <div className="Timer" onClick={() => dispatch(switchIsRunning())}>
+      <audio id='beep' preload='auto' src={beepSound} />
       <div className="outer">
         <div className="inner" style={{ borderColor: `${colors.primaryColor}99`}}>
           <div>

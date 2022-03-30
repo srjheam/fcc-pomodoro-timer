@@ -10,7 +10,7 @@ export function NumberPicker(props) {
         <FontAwesomeIcon icon={solid('minus')} />
       </button>
       <span className='Counter'>{props.counter}</span>
-      <button className='btn-incrementer' onClick={() => props.onCounterChange(props.counter + (+props.changeAmount))}>
+      <button className='btn-incrementer' disabled={props.counter >= 60} onClick={() => props.onCounterChange(props.counter + (+props.changeAmount))}>
         <FontAwesomeIcon icon={solid('plus')} />
       </button>
     </div>

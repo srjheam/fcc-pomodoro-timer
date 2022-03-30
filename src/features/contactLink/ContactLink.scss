@@ -1,0 +1,13 @@
+.gitHubContact {
+  color: #00000099;
+  
+  a {
+    color: #00000099;
+    text-decoration: none;
+
+    &:hover {
+      color: black;
+      text-decoration: underline;
+    }
+  }
+}

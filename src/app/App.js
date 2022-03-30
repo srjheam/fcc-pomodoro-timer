@@ -4,6 +4,7 @@ import { HelmetHead } from '../features/helmetHead/HelmetHead'
 import { Timer } from '../features/timer/Timer';
 import { TimerControl } from '../features/timerControl/TimerControl'
 import { Settings } from '../features/settings/Settings';
+import { ContactLink } from '../features/contactLink/ContactLink';
 import './App.scss';
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
         <TimerControl />
         <Settings />
       </div>
+      <footer>
+        <ContactLink />
+      </footer>
     </div>
   );
 }

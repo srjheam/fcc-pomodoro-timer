@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/fcc-pomodoro-timer/static/css/main.b71e0d5e.css",
-    "main.js": "/fcc-pomodoro-timer/static/js/main.f11570bb.js",
+    "main.css": "/fcc-pomodoro-timer/static/css/main.40758052.css",
+    "main.js": "/fcc-pomodoro-timer/static/js/main.de7c9aef.js",
     "index.html": "/fcc-pomodoro-timer/index.html",
-    "main.b71e0d5e.css.map": "/fcc-pomodoro-timer/static/css/main.b71e0d5e.css.map",
-    "main.f11570bb.js.map": "/fcc-pomodoro-timer/static/js/main.f11570bb.js.map"
+    "main.40758052.css.map": "/fcc-pomodoro-timer/static/css/main.40758052.css.map",
+    "main.de7c9aef.js.map": "/fcc-pomodoro-timer/static/js/main.de7c9aef.js.map"
   },
   "entrypoints": [
-    "static/css/main.b71e0d5e.css",
-    "static/js/main.f11570bb.js"
+    "static/css/main.40758052.css",
+    "static/js/main.de7c9aef.js"
   ]
 }

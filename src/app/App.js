@@ -1,5 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
+import { HelmetHead } from '../features/helmetHead/HelmetHead'
 import { Timer } from '../features/timer/Timer';
 import { TimerControl } from '../features/timerControl/TimerControl'
 import { Settings } from '../features/settings/Settings';
@@ -10,6 +11,7 @@ function App() {
 
   return (
     <div className={'App ' + (onBreak ? 'paletteBreak' : 'palettePomodoro')}>
+      <HelmetHead />
       <div className='TimerWrapper'>
         <Timer />
       </div>

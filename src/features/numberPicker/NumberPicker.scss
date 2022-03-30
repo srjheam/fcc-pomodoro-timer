@@ -15,6 +15,14 @@
   > button {
     height: $height;
     @include border;
+
+    &:disabled {
+      pointer-events: none;
+
+      svg {
+        filter: grayscale(100%);
+      }
+    }
   }
   
   .btn-incrementer {

@@ -1,0 +1,13 @@
+.TimerControl {
+  display: flex;
+  place-content: center center;
+  gap: 8px;
+  background-color: #eee;
+  border-radius: 8px;
+
+  > button {
+    width: 40px;
+    background-color: transparent;
+    border: none;
+  }
+}

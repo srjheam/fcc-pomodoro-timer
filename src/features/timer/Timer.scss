@@ -1,0 +1,89 @@
+.Timer {
+  $timerHeight: 320px;
+  $outerPadding: $timerHeight * .125;
+  $svgStrokeDasharray: $timerHeight * 2.95;
+
+  display: flex;
+  place-content: center center;
+  position: relative;
+  cursor: pointer;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  .outer {
+    height: $timerHeight;
+    width: $timerHeight;
+    border-radius: 50%;
+    padding: $outerPadding;
+  }
+
+  .inner {
+    $innerHeight: $timerHeight - $outerPadding;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    height: $innerHeight;
+    width: $innerHeight;
+    display: grid;
+    place-content: center center;
+    border-radius: 50%;
+    background-color: #eee;
+    animation: 1s ease-in-out infinite alternate running fadein;
+    box-sizing: content-box;
+
+    border: solid $outerPadding / 16 black;
+
+    span {
+      width: 1em;
+      font-size: 4em;
+      font-weight: 300;
+      margin: .2em;
+    }
+
+    .endTime {
+      font-size: 1.2em;
+      letter-spacing: .05em;
+      text-align: center;
+      transform: translateY(1em);
+    }
+  }
+  
+  .timerInnerRing {
+    .timerRing {
+      width: $timerHeight;
+      height: $timerHeight;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+  
+      circle {
+        fill: none;
+        stroke-width: $outerPadding;
+        stroke-dasharray: $svgStrokeDasharray;
+      }
+    }
+  }
+
+  .timerRing {
+    width: $timerHeight;
+    height: $timerHeight;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(-1) rotate(-90deg);
+
+    circle {
+      fill: none;
+      stroke: url("#GradientColor");
+      stroke-width: $outerPadding;
+      stroke-dasharray: $svgStrokeDasharray;
+      transition: 1s;
+    }
+  }
+
+}

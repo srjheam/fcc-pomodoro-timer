@@ -17,7 +17,6 @@ export function Timer() {
   const isRunning = useSelector((state) => state.timer.isRunning);
   const dispatch = useDispatch();
 
-  // Convert deciseconds to minutes and seconds
   const timer = {
     minutes: Math.floor(timeRemaining / 60),
     seconds: timeRemaining % 60,
